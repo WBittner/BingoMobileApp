@@ -1,0 +1,19 @@
+<StackLayout>
+    <callBoard [calls]="calls"></callBoard>
+    <ScrollView>
+        <GridLayout columns="auto,auto" rows="auto,auto"> 
+            <StackLayout row="0" col="0">
+                <card id=0 [columns]="cards[0]" (onBingo)="bingo($event)" [enabled]="!cardsBingod[0]"></card>
+            </StackLayout>
+            <StackLayout row="0" col="1">
+                <card id=1 [columns]="cards[1]" (onBingo)="bingo($event)" [enabled]="!cardsBingod[1]"></card>
+            </StackLayout>
+            <StackLayout row="1" col="0">
+                <card id=2 [columns]="cards[2]" (onBingo)="bingo($event)" [enabled]="!cardsBingod[2]"></card>
+            </StackLayout>
+            <StackLayout row="1" col="1">
+                <card id=3 [columns]="cards[3]" (onBingo)="bingo($event)" [enabled]="!cardsBingod[3]"></card>
+            </StackLayout>
+        </GridLayout>
+    </ScrollView>
+</StackLayout>

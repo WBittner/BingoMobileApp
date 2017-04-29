@@ -1,0 +1,14 @@
+<StackLayout #container>
+    <!--Image src="res://options" stretch="none" horizontalAlignment="center">TODO: image?</Image-->
+
+    <GridLayout columns="auto, *", rows="auto,auto">
+        <Label class="label" text="Number of Cards" textWrap="true" row="0" col="0"></Label>
+        <TextField #numCardsField keyboardType="number" autocorrect="false" row="0" col="1"
+            [(ngModel)]="optionsService.options.numCards"></TextField>
+        <Label class="label" text="Number of Seconds Between Calls" textWrap="true" row="1" col="0"></Label>
+        <TextField #callIntervalField keyboardType="number" autocorrect="false" row="1" col="1"
+            [(ngModel)]="optionsService.options.callInterval"></TextField>
+    </GridLayout>
+
+    <Button text="Play!" class="submit-button" (tap)="submit()"></Button>
+</StackLayout>

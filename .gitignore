@@ -1,0 +1,17 @@
+#Build files/config files
+*.apk
+.idea
+
+#Extra libs
+node_modules
+
+#Generated NativeScript stuff
+App_Resources
+hooks
+platforms
+
+#Tutorial dir
+Groceris
+
+#We TypeScript now
+*.js

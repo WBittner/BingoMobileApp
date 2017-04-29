@@ -1,0 +1,3 @@
+<StackLayout class="callBoard" (tap)="onTap()" orientation="horizontal">
+    <Label *ngFor="let call of calls | slice:0:10; let i=index" [text]="call + ' '"></Label>
+</StackLayout>

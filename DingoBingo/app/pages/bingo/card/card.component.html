@@ -1,0 +1,10 @@
+<StackLayout class="card">
+    <StackLayout orientation="horizontal">
+        <column [slots]="columns[0]"></column>
+        <column [slots]="columns[1]"></column>
+        <column [slots]="columns[2]"></column> 
+        <column [slots]="columns[3]"></column>
+        <column [slots]="columns[4]"></column>
+    </StackLayout>
+    <Button text="BINGO" [isEnabled]="enabled" (tap)="bingoCheck()"></Button> 
+</StackLayout>
