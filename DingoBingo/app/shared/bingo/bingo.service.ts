@@ -12,33 +12,56 @@ import {InitOptionsService} from "../initOptions.service";
 export class BingoService {
     bingo: Bingo;
     callInterval: number;
+    numSecondsSinceLastCall: number;
     interval: number;
     onNewCall: (number) => void;
 
     constructor(initOptionsService: InitOptionsService) {
         this.callInterval = initOptionsService.options.callInterval;
         this.bingo = new Bingo(initOptionsService.options.numCards);
+        this.numSecondsSinceLastCall = 0;
 
-        this.tick();
+        this.startInterval();
+    }
+
+    pause() {
+        this.clearInterval();
+    }
+
+    resume() {
         this.startInterval();
     }
 
     clearInterval() {
-        clearInterval(this.interval);
+        if(this.interval) {
+            clearInterval(this.interval);
+        }
+        this.interval = undefined;
     }
 
     startInterval() {
-        this.interval = setInterval(this.tick.bind(this), this.callInterval * 1000);
+        //Just in case - don't want like 10 versions of this going somehow
+        if(this.interval) {
+            this.clearInterval();
+        }
+        this.interval = setInterval(this.tick.bind(this), 1000);
     }
 
     tick() {
+        if(++this.numSecondsSinceLastCall === this.callInterval) {
+            this.callNumber();
+            this.numSecondsSinceLastCall = 0;
+        }
+    }
+
+    callNumber() {
         let number = this.bingo.toBeCalled.shift();
 
         if(number) {
             this.bingo.called.unshift(number);
             if(typeof this.onNewCall === "function") {
                 this.onNewCall(number);
-            }           
+            }
         } else {
             clearInterval(this.interval);
             alert("wow you suck at bingo..");

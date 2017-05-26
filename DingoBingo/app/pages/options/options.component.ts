@@ -37,6 +37,10 @@ export class OptionsComponent implements OnInit {
     }
 
     startGame() {
+        //TODO: there needs to be a built in way in angular 2 or nativescript to say 
+        // "this input field binds to a number!" Find it?
+        this.optionsService.options.callInterval = parseInt(<any>this.optionsService.options.callInterval, 10);
+        this.optionsService.options.numCards = parseInt(<any>this.optionsService.options.numCards, 10);
         this.router.navigate(["bingo"]);
     }
 }

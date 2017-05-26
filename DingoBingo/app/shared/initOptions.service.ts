@@ -14,7 +14,7 @@ export class InitOptionsService {
     }
 
     isValid():boolean {
-        return this.options.numCards > 0 && this.options.numCards < 5 &&
-                this.options.callInterval > 0 && this.options.callInterval < 10;
+        return true;//this.options.numCards > 0 && this.options.numCards < 5 &&
+                //this.options.callInterval > 0 && this.options.callInterval < 10;
     }
 }
